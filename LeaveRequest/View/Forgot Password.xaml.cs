@@ -15,26 +15,21 @@ using System.Windows.Shapes;
 namespace LeaveRequest.View
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for Forgot_Password.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Forgot_Password : Window
     {
-        public Login()
+        public Forgot_Password()
         {
             InitializeComponent();
         }
 
-        private void Chk_Remember_Checked(object sender, RoutedEventArgs e)
+        private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
-        {
-            Forgot_Password forgot = new Forgot_Password();
+            Login login = new Login();
 
             this.Hide();
-            forgot.Show();
+            login.Show();
             this.Close();
         }
     }
