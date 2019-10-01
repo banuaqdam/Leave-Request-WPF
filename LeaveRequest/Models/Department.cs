@@ -16,7 +16,7 @@ namespace LeaveRequest.Models
         public string Name { get; set; }
         public bool isDeleted { get; set; }
         [ForeignKey("Division")]
-        public string Divison_Id
+        public string Divison_Id { get; set; }
         public Division Division { get; set; }
     }
 }
