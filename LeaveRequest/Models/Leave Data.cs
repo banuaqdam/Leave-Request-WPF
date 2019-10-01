@@ -8,7 +8,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeaveRequest.Models
 {
+    [Table("Tb_Leave_Data")]
     class Leave_Data
     {
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime CreateAt { get; set; }
+        [ForeignKey("Type Leave")]
+        public int Type_Leave_ID { get; set; }
+        public Type_Leave Type_Leave { get; set; }
+        [ForeignKey("Employee")]
+        public string NIK { get; set; }
+        //public Employee Employee { get; set; }
+        [ForeignKey("Approver")]
+        public string Manager_Id { get; set; }
+        
     }
 }
