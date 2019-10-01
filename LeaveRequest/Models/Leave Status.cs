@@ -13,7 +13,7 @@ namespace LeaveRequest.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool isDeleted { get;set }
+        public string Status { get; set; }
+        public bool isDeleted { get; set; }
     }
 }
