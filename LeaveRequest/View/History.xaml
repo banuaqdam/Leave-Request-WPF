@@ -1,0 +1,20 @@
+﻿<Window x:Class="LeaveRequest.View.History"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeaveRequest.View"
+        mc:Ignorable="d"
+        Title="History" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FF00C7AC" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="/Assets/mii_logo.png" Height="100" Width="100" Margin="50,50,1110,0" VerticalAlignment="Top" RenderTransformOrigin="0.67,0.59" />
+        <Label x:Name="label" Content="Leave Request" HorizontalAlignment="Center" Margin="518,50,516,0" VerticalAlignment="Top" FontSize="36" />
+        <Button x:Name="Btn_back" Content="Back" HorizontalAlignment="Left" Height="28" Margin="1122,614,0,0" VerticalAlignment="Top" Width="78" Background="White" Foreground="Blue" Click="Btn_back_Click"/>
+    </Grid>
+</Window>
