@@ -32,7 +32,6 @@
                 <Grid VerticalAlignment="Center" Margin="20,0">
                     <CheckBox x:Name="Chk_Remember" Content="Remember" HorizontalAlignment="Left" Foreground="Gray" Checked="Chk_Remember_Checked"/>
                     <TextBlock HorizontalAlignment="Right" Height="18">Forgot?</TextBlock>
-
                 </Grid>
                 <Button x:Name="Btn_Login" Content="Login" HorizontalAlignment="Center"  Height="28" Margin="25,10,25,10"/>
             </StackPanel>
