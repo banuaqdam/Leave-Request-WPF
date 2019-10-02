@@ -24,13 +24,27 @@ namespace LeaveRequest.View
             InitializeComponent();
         }
 
-        private void Btn_back_Click(object sender, RoutedEventArgs e)
+        private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
 
             Home home = new Home();
             home.Show();
             this.Close();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Home home = new Home();
+            home.Show();
+            this.Close();
+        }
+
+        private void DataGridHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

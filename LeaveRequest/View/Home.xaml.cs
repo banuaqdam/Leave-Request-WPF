@@ -23,5 +23,26 @@ namespace LeaveRequest.View
         {
             InitializeComponent();
         }
+
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            History history = new History();
+            history.Show();
+            this.Close();
+        }
+
+        //private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ButtonOpenMenu.Visibility = Visibility.Collapsed;
+        //    ButtonCloseMenu.Visibility = Visibility.Visible;
+
+        //}
+        //private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ButtonOpenMenu.Visibility = Visibility.Visible;
+        //    ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        //}
     }
 }
