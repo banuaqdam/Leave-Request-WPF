@@ -27,8 +27,9 @@
             <TextBlock Text="Login" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
             <StackPanel VerticalAlignment="Center" Margin="20">
                 <TextBox x:Name="Txt_Email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10"/>
+                <TextBlock Name="EmailErrorMassage"  Opacity="Crimson" Foreground="Red"></TextBlock>
                 <PasswordBox x:Name="Txt_Password" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="10"/>
-               
+                <TextBlock Name="PasswordErrorMassage" Margin="10" Opacity="Crimson" Foreground="Red"></TextBlock>
                 <Grid VerticalAlignment="Center" Margin="20,0">
                     <CheckBox x:Name="Chk_Remember" Content="Remember" HorizontalAlignment="Left" Foreground="Gray" Checked="Chk_Remember_Checked"/>
                 </Grid>
