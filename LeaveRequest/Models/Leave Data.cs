@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LeaveRequest.Models
 {
     [Table("Tb_Leave_Data")]
-    class Leave_Data
+    public class Leave_Data
     {
         [Key]
         public int Id { get; set; }
@@ -17,14 +17,15 @@ namespace LeaveRequest.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime CreateAt { get; set; }
-        [ForeignKey("Type Leave")]
+        [ForeignKey("Type_Leave")]
         public int Type_Leave_ID { get; set; }
         public Type_Leave Type_Leave { get; set; }
         [ForeignKey("Employee")]
         public string NIK { get; set; }
-        //public Employee Employee { get; set; }
-        [ForeignKey("Approver")]
+        public Employee Employee { get; set; }
+        [ForeignKey("Manager")]
         public string Manager_Id { get; set; }
-        
+        public Employee Manager { get; set; }
+
     }
 }

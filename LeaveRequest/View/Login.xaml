@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LeaveRequest.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+
         Title="Leave Request" Height="700" Width="650" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
@@ -15,6 +16,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Image Source="/Assets/mii_logo.png" Height="200" Width="200" Margin="50" VerticalAlignment="Top" />
+
         <Rectangle Height="280" Width="240" Fill="Azure" VerticalAlignment="Bottom" Margin="0,100" RadiusY="30" RadiusX="30">
             <Rectangle.Effect>
                 <DropShadowEffect Color="Black" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="5"/>
@@ -22,17 +24,19 @@
         </Rectangle>
         <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="181,0,181,115">
             <TextBlock Text="Login" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
-            <StackPanel VerticalAlignment="Center" Margin="20">
+            <StackPanel VerticalAlignment="Center" Margin="20,4,20,-15" Height="251">
                 <TextBox x:Name="Txt_Email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10"/>
-                <TextBlock Name="EmailErrorMassage"  Opacity="Crimson" Foreground="Red"></TextBlock>
+                <TextBlock Name="EmailErrorMassage"  OpacityMask="Crimson" Foreground="Red"></TextBlock>
                 <PasswordBox x:Name="Txt_Password" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="10"/>
-                <TextBlock Name="PasswordErrorMassage" Margin="10" Opacity="Crimson" Foreground="Red"></TextBlock>
+                <TextBlock Name="PasswordErrorMassage" Margin="10" OpacityMask="Crimson" Foreground="Red"></TextBlock>
                 <Grid VerticalAlignment="Center" Margin="20,0">
                     <CheckBox x:Name="Chk_Remember" Content="Remember" HorizontalAlignment="Left" Foreground="Gray" Checked="Chk_Remember_Checked"/>
                 </Grid>
                 <Grid VerticalAlignment="Center">
                     <Button x:Name="Btn_Forgot" Content="Forgot" HorizontalAlignment="Left"  Height="28" Margin="25,10,25,10" Click="Btn_Forgot_Click"/>
+
                     <Button x:Name="Btn_Login" Content="Login" HorizontalAlignment="Right"  Height="28" Margin="0,10,25,0" VerticalAlignment="Top" Click="Btn_Login_Click"/>
+
                 </Grid>
                 
             </StackPanel>

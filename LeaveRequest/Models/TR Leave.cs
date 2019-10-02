@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LeaveRequest.Models
 {
     [Table("Tb_TR_Leave")]
-    class TR_Leave
+    public class TR_Leave
     {
         [Key]
         public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace LeaveRequest.Models
         public int Leave_Status_Id { get; set; }
         public Leave_Status Leave_Status { get; set; }
         [ForeignKey("Leave_Data")]
-        public int Leave_Data_Id { get;set;}
+        public int Leave_Data_Id { get; set; }
         public Leave_Data Leave_Data { get; set; }
     }
 }

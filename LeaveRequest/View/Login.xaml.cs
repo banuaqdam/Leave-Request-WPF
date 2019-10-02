@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using LeaveRequest.Models;
 
 namespace LeaveRequest.View
 {
@@ -37,6 +40,7 @@ namespace LeaveRequest.View
             forgot.Show();
             this.Close();
         }
+
 
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
