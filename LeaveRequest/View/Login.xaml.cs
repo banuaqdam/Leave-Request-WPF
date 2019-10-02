@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using LeaveRequest.Models;
 
 namespace LeaveRequest.View
 {
@@ -36,6 +39,41 @@ namespace LeaveRequest.View
             this.Hide();
             forgot.Show();
             this.Close();
+        }
+
+        private  void Btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            Roles role = new Roles();
+            Forgot_Password forgot = new Forgot_Password();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://192.168.128.186:3019/api/");
+
+            string Id = Txt_Email.Text;
+            string Name = Txt_Password.Password;
+            
+            var response =  client.GetAsync("Roles/"+Id);
+            response.Wait();
+            var result = response.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<Roles>();
+                readTask.Wait();
+                role = readTask.Result;            
+            }else
+            {
+                MessageBox.Show("Error Code" + result.StatusCode + " : Message - " + result.ReasonPhrase);
+            }
+            if (role.Name == Name)
+            {
+                this.Hide();
+                forgot.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("SALAHA");
+            }
+
         }
     }
 }

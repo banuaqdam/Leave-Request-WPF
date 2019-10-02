@@ -12,8 +12,8 @@ namespace LeaveRequest.Models
     class Roles
     {
         [Key]
-        public int Id { get; set; }
-        public  string Role { get; set; }
+        public string Id { get; set; }
+        public  string Name { get; set; }
         public bool isDeleted { get; set; }
     }
 }
