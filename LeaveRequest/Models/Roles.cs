@@ -9,11 +9,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LeaveRequest.Models
 {
     [Table("Tb_M_Roles")]
-    class Roles
+    public class Roles
     {
         [Key]
         public string Id { get; set; }
-        public  string Name { get; set; }
+        public  string Role { get; set; }
         public bool isDeleted { get; set; }
     }
 }

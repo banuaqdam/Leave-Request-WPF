@@ -48,10 +48,10 @@ namespace LeaveRequest.View
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://192.168.128.186:3019/api/");
 
-            string Id = Txt_Email.Text;
-            string Name = Txt_Password.Password;
+            string Email = Txt_Email.Text;
+            string Password = Txt_Password.Password;
             
-            var response =  client.GetAsync("Roles/"+Id);
+            var response =  client.GetAsync("Roles/"+Email);
             response.Wait();
             var result = response.Result;
             if (result.IsSuccessStatusCode)
@@ -63,17 +63,6 @@ namespace LeaveRequest.View
             {
                 MessageBox.Show("Error Code" + result.StatusCode + " : Message - " + result.ReasonPhrase);
             }
-            if (role.Name == Name)
-            {
-                this.Hide();
-                forgot.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("SALAHA");
-            }
-
         }
     }
 }

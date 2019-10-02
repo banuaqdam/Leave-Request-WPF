@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LeaveRequest.Models
 {
     [Table("Tb_M_Department")]
-    class Department
+    public class Department
     {
         [Key]
         public string Id { get; set; }
