@@ -41,28 +41,14 @@ namespace LeaveRequest.View
             this.Close();
         }
 
-        private  void Btn_Login_Click(object sender, RoutedEventArgs e)
-        {
-            Roles role = new Roles();
-            Forgot_Password forgot = new Forgot_Password();
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://192.168.128.186:3019/api/");
 
-            string Email = Txt_Email.Text;
-            string Password = Txt_Password.Password;
-            
-            var response =  client.GetAsync("Roles/"+Email);
-            response.Wait();
-            var result = response.Result;
-            if (result.IsSuccessStatusCode)
-            {
-                var readTask = result.Content.ReadAsAsync<Roles>();
-                readTask.Wait();
-                role = readTask.Result;            
-            }else
-            {
-                MessageBox.Show("Error Code" + result.StatusCode + " : Message - " + result.ReasonPhrase);
-            }
+        private void Btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            Home home = new Home();
+
+            this.Hide();
+            home.Show();
+            this.Close();
         }
     }
 }

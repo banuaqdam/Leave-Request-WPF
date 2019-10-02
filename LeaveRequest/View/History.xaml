@@ -4,17 +4,104 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeaveRequest.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="History" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" Offset="0"/>
-                <GradientStop Color="#FF00C7AC" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Image Source="/Assets/mii_logo.png" Height="100" Width="100" Margin="50,50,1110,0" VerticalAlignment="Top" RenderTransformOrigin="0.67,0.59" />
-        <Label x:Name="label" Content="Leave Request" HorizontalAlignment="Center" Margin="518,50,516,0" VerticalAlignment="Top" FontSize="36" />
-        <Button x:Name="Btn_back" Content="Back" HorizontalAlignment="Left" Height="28" Margin="1122,614,0,0" VerticalAlignment="Top" Width="78" Background="White" Foreground="Blue" Click="Btn_back_Click"/>
+        Title="Leave Request" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="Lavender">
+        <Grid Height="600" Width="1080" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <DataGrid x:Name="DataGridHistory" HorizontalAlignment="Center" Margin="40,100,40,0" VerticalAlignment="Top" Width="900" Height="400" SelectionChanged="DataGridHistory_SelectionChanged">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#FFC500FF"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                        <Setter Property="BorderBrush" Value="#FFC500FF"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center" /> 
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No" Width="100"/>
+                    <DataGridTextColumn Header="Start Date" Width="200"/>
+                    <DataGridTextColumn Header="End Date" Width="200"/>
+                    <DataGridTextColumn Header="Type Leave" Width="200"/>
+                    <DataGridTextColumn Header="Status" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="Btn_Back" Content="Back" HorizontalAlignment="Left" Margin="916,531,0,0" VerticalAlignment="Top" Width="74" Click="Btn_Back_Click"/>
+        </Grid>
+        <Grid Height="100" VerticalAlignment="Top" Background="#FFC500FF">
+            <TextBlock FontSize="22" Foreground="White" Text="Leave Request" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Sulistyo Adi N" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                <materialDesign:PopupBox  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+                    <StackPanel Width="150">
+                        <Button Content="Change Password" Name="ChangePassword"/>
+                        <Separator/>
+                        <Button Content="Logout" Name="Logout"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF5B0076">
+            <StackPanel>
+                <Grid VerticalAlignment="Top" Height="100" Background="White">
+                    <Image Source="/Assets/mii_logo.png" Height="70" Width="70"/>
+                    <!--<Button x:Name="ButtonCloseMenu" Width="60" Height="60" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                    <materialDesign:PackIcon Foreground="#FF5B0076" Kind="ArrowLeft" Height="25" Width="25"/>
+                </Button>
+                <Button x:Name="ButtonOpenMenu" Width="60" Height="60" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="ButtonOpenMenu_Click">
+                    <materialDesign:PackIcon Foreground="#FF5B0076" Kind="Menu" Height="25" Width="25"/>
+                </Button>-->
+                </Grid>
+                <ListView>
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="Home" MouseDoubleClick="Home_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Request" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CheckBold" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Approve" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="History" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="History" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="GreasePencil" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Input Leave Status" VerticalAlignment="Center" Margin="20 10" FontSize="12"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Calendar" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Input Holiday" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FountainPenTip" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Input Leave Type" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <!--<Button x:Name="Btn_Request" Content="Request" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Width="250" Height="250"/>
+        <Button x:Name="Btn_Approve" Content="Aprrove" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="250"/>
+        <Button x:Name="Btn_History" Content="History" HorizontalAlignment="Right" Margin="0,0,50,0" VerticalAlignment="Center" Width="250" Height="250"/>-->
     </Grid>
 </Window>
