@@ -37,5 +37,14 @@ namespace LeaveRequest.View
             forgot.Show();
             this.Close();
         }
+
+        private void Btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            Home home = new Home();
+
+            this.Hide();
+            home.Show();
+            this.Close();
+        }
     }
 }
