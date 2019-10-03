@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using LeaveRequest.Models;
+using LeaveRequest.Controllers;
+using LeaveRequest.Context;
 
 namespace LeaveRequest.View
 {
@@ -22,6 +24,8 @@ namespace LeaveRequest.View
     /// </summary>
     public partial class Login : Window
     {
+        public object User_controller { get; private set; }
+
         public Login()
         {
             InitializeComponent();
@@ -44,11 +48,21 @@ namespace LeaveRequest.View
 
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
+            User user = new User();
+            User_Controller _user = new User_Controller();
+            MyContext _contex = new MyContext();
 
-            this.Hide();
-            home.Show();
-            this.Close();
+            string email = Txt_Email.Text;
+            string password = Txt_Password.Password;
+            var get = _contex.Users.Where(u => u.Email == email).FirstOrDefault<User>();
+            string NIK = get.Employee_Id;
+            var status = _user.UserLogin(email, password);
+            if (status == true)
+            {
+                this.Hide();
+                Home home = new Home(NIK);
+                home.Show();
+            }
         }
     }
 }

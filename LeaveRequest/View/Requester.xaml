@@ -33,7 +33,7 @@
         <Grid Height="100" VerticalAlignment="Top" Background="#FFC500FF">
             <TextBlock FontSize="22" Foreground="White" Text="Leave Request" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Sulistyo Adi N" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock x:Name="_Txt_Name" OpacityMask="Crimson" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
                     <StackPanel Width="150">
                         <Button Content="Change Password" Name="ChangePassword"/>
@@ -43,9 +43,10 @@
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF5B0076" >
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF5B0076">
             <StackPanel>
                 <Grid VerticalAlignment="Top" Height="100" Background="White">
+                    <Image Source="/Assets/mii_logo.png" Height="70" Width="70"/>
                     <!--<Button x:Name="ButtonCloseMenu" Width="60" Height="60" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
                     <materialDesign:PackIcon Foreground="#FF5B0076" Kind="ArrowLeft" Height="25" Width="25"/>
                 </Button>
@@ -54,38 +55,45 @@
                 </Button>-->
                 </Grid>
                 <ListView>
-                    <!--ScrollViewer.HorizontalScrollBarVisibility="Disabled"-->
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="Home" Selected="Home_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60" Foreground="#FFC500FF">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Request" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="Request" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF" Selected="ListViewItem_Selected">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="Approve" Selected="Approve_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CheckBold" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Approve" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="Approve" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="History" MouseDoubleClick="History_MouseDoubleClick">
+                    <ListViewItem Height="60" Foreground="#FFC500FF">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="History" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="History" VerticalAlignment="Center" Margin="20 10"></TextBlock>
+                            <TextBlock Text="History" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="Manage" Selected="Manage_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileDocumentBoxOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Manage Data" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-
         </Grid>
         <StackPanel Margin="250 130 100 5">
-            <TextBox x:Name="txtNama" Margin="50 50 300 5 " TextWrapping="Wrap" materialDesign:HintAssist.Hint="Employee Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <TextBox x:Name="txtNIK"  Margin="50 50 300 5 "   TextWrapping="Wrap" materialDesign:HintAssist.Hint="Employee Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <Grid>
+                
+            </Grid>
+            <TextBlock x:Name="Txt_Name" Margin="50 50 300 5" OpacityMask="Crimson" Foreground="Black"/>
+            <TextBlock x:Name="Txt_NIK"  Margin="50 50 300 5 " OpacityMask="Crimson" Foreground="Black" />
             <TextBlock x:Name="LeaveType" Margin="50 30 100 5"   TextWrapping="Wrap" Text="Jenis Cuti :" VerticalAlignment="Top"/>
             <ComboBox x:Name="comboBox"  Margin="50 10 100 20" Text="Pilih Jenis Cuti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120">
                 <ComboBoxItem Content="Cuti Normal"/>
@@ -99,16 +107,16 @@
                 <ComboBoxItem Content="Cuti Kerabat Meninggal"/>
             </ComboBox>
             <TextBlock x:Name="BlockStartDate" HorizontalAlignment="Left" Margin="50 0 0 0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Start Date :"/></TextBlock>
-            <DatePicker Name="StartDate" HorizontalAlignment="Left" Margin="50 0 0 0"  VerticalAlignment="Top" Width="120"/>
+            <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="50 0 0 0"  VerticalAlignment="Top" Width="120"/>
             <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="50 0 0 0"   TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="4.688,-1.629"><Run Text="End Date :"/></TextBlock>
-            <DatePicker Name="EndDate" HorizontalAlignment="Left" Margin="50 0 0 0"   VerticalAlignment="Top" Width="120"/>
+            <DatePicker Name="EndDate" HorizontalAlignment="Left" Margin="50 0 0 0"   VerticalAlignment="Top" Width="120" SelectedDateChanged="Changed"/>
             <TextBlock x:Name="BlockStartDate_Copy" HorizontalAlignment="Left" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Cuti Yang Diambil :"/></TextBlock>
-            <TextBox x:Name="txtLeaveDay" HorizontalAlignment="Left" Height="23" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="Txt_JumlahCuti"  OpacityMask="Crimson" Foreground="Black" Height="24" Margin="33,0,0,0"/>
             <TextBlock x:Name="BlockStartDate_Copy1" HorizontalAlignment="Left" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Sisa Cuti :"/></TextBlock>
-            <TextBox x:Name="txtCurrent_Leave" HorizontalAlignment="Left" Height="23" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="Txt_CurrentCuti"  OpacityMask="Crimson" Foreground="Black" Height="24" Margin="33,0,0,0"/>
             <TextBlock x:Name="BlockStartDate_Copy2" HorizontalAlignment="Left" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Sisa Cuti Tahun Lalu :"/></TextBlock>
-            <TextBox x:Name="txtLast_Year_Leave" HorizontalAlignment="Left" Height="23" Margin="50 0 0 0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Button x:Name="btnSubmit" Background="#FFD995EE" Content="Submit" HorizontalAlignment="Left" Margin="50 10 0 0"   VerticalAlignment="Top" Width="81"/>
+            <TextBlock x:Name="Txt_LastYearCuti"  OpacityMask="Crimson" Foreground="Black" Height="24" Margin="33,0,0,0"/>
+            <Button x:Name="btnSubmit" Background="#FFD995EE" Content="Submit" HorizontalAlignment="Left" Margin="50 10 0 0"   VerticalAlignment="Top" Width="81" Click="btnSubmit_Click"/>
         </StackPanel>
 
         <!--<Button x:Name="Btn_Request" Content="Request" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Width="250" Height="250"/>

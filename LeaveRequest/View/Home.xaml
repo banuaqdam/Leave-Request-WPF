@@ -34,7 +34,7 @@
         <Grid Height="100" VerticalAlignment="Top" Background="#FFC500FF">
             <TextBlock FontSize="22" Foreground="White" Text="Leave Request" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Sulistyo Adi N" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock x:Name="Txt_Name" OpacityMask="Crimson" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
                     <StackPanel Width="150">
                         <Button Content="Change Password" Name="ChangePassword"/>
@@ -63,7 +63,7 @@
                             <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Selected="ListViewItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="Request" VerticalAlignment="Center" Margin="20 10"></TextBlock>
