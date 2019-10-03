@@ -19,9 +19,15 @@ namespace LeaveRequest.View
     /// </summary>
     public partial class Approver : Window
     {
-        public Approver()
+        public string G_NIK;
+        public Approver(string NIK)
         {
             InitializeComponent();
+            setNIK(NIK);
+        }
+        public void setNIK(string NIK)
+        {
+            G_NIK = NIK;
         }
 
         private void Btn_Approved_Click(object sender, RoutedEventArgs e)
@@ -36,7 +42,7 @@ namespace LeaveRequest.View
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
+            Home home = new Home(G_NIK);
 
             this.Hide();
             home.Show();
@@ -45,7 +51,7 @@ namespace LeaveRequest.View
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Home home = new Home();
+            Home home = new Home(G_NIK);
 
             this.Hide();
             home.Show();
@@ -54,7 +60,7 @@ namespace LeaveRequest.View
 
         private void History_Click(object sender, RoutedEventArgs e)
         {
-            History history = new History();
+            History history = new History(G_NIK);
 
             this.Hide();
             history.Show();
@@ -63,7 +69,7 @@ namespace LeaveRequest.View
 
         private void Manage_Click(object sender, RoutedEventArgs e)
         {
-            Manage manage = new Manage();
+            Manage manage = new Manage(G_NIK);
 
             this.Hide();
             manage.Show();

@@ -14,13 +14,15 @@ namespace LeaveRequest.Context
         {
 
         }
+        public DbSet<Holiday> Holidays { get; set; }
+        public DbSet<Leave_Data> Leave_Datas { get; set; }
+        public DbSet<Leave_Status> Leave_Status { get; set; }
+        public DbSet<Roles> Roless { get; set; }
+        public DbSet<TR_Leave> TR_Leaves { get; set; }
+        public DbSet<Type_Leave> Type_Leaves { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Division> Divisions { get; set; }
-        public DbSet<Holiday> Holidays { get; set; }
-        //public DbSet<Leave_Data> Leave_Datas { get; set; }
-        //public DbSet<Leave_Status> Leave_Status { get; set; }
-        public DbSet<Roles> Roless { get; set; }
-        //public DbSet<TR_Leave> TR_Leaves { get; set; }
-        //public DbSet<Type_Leave> Type_Leaves { get; set; }
     }
 }

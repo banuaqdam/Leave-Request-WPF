@@ -20,11 +20,16 @@ namespace LeaveRequest.View
     /// </summary>
     public partial class Manage : Window
     {
-        public Manage()
+        public string G_NIK;
+        public Manage(string NIK)
         {
             InitializeComponent();
+            setNIK(NIK);
         }
-
+        public void setNIK(string NIK)
+        {
+            G_NIK = NIK;
+        }
         private void getHoliday()
         {
             DataGridHoliday.Visibility = Visibility.Visible;
@@ -95,7 +100,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Home home = new Home();
+            Home home = new Home(G_NIK);
             home.Show();
             this.Close();
         }
@@ -104,7 +109,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Home home = new Home();
+            Home home = new Home(G_NIK);
             home.Show();
             this.Close();
         }
@@ -112,7 +117,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Approver approve = new Approver();
+            Approver approve = new Approver(G_NIK);
             approve.Show();
             this.Close();
         }
@@ -120,7 +125,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            History history = new History();
+            History history = new History(G_NIK);
             history.Show();
             this.Close();
         }

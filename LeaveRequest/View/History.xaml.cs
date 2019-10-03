@@ -19,16 +19,21 @@ namespace LeaveRequest.View
     /// </summary>
     public partial class History : Window
     {
-        public History()
+        public string G_NIK;
+        public History(string NIK)
         {
             InitializeComponent();
+            setNIK(NIK);
         }
-
+        public void setNIK(string NIK)
+        {
+            G_NIK = NIK;
+        }
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
 
-            Home home = new Home();
+            Home home = new Home(G_NIK);
             home.Show();
             this.Close();
         }
@@ -37,7 +42,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Home home = new Home();
+            Home home = new Home(G_NIK);
             home.Show();
             this.Close();
         }
@@ -46,7 +51,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Approver approve = new Approver();
+            Approver approve = new Approver(G_NIK);
             approve.Show();
             this.Close();
         }
@@ -55,7 +60,7 @@ namespace LeaveRequest.View
         {
             this.Hide();
 
-            Manage manage = new Manage();
+            Manage manage = new Manage(G_NIK);
             manage.Show();
             this.Close();
         }
