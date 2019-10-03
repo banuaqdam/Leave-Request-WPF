@@ -37,7 +37,7 @@
                 <TextBlock x:Name="Txt_Name" OpacityMask="Crimson" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
                 <materialDesign:PopupBox  Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
                     <StackPanel Width="150">
-                        <Button Content="Change Password" Name="ChangePassword"/>
+                        <Button Content="Change Password" Name="ChangePassword" Click="ChangePassword_Click" />
                         <Separator/>
                         <Button Content="Logout" Name="Logout"/>
                     </StackPanel>

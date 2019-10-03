@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LeaveRequest.Context;
+using LeaveRequest.Controllers;
 
 
 namespace LeaveRequest.View
@@ -75,22 +76,49 @@ namespace LeaveRequest.View
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            DateTime? sDate = StartDate.SelectedDate;
-            DateTime? eDate = EndDate.SelectedDate;
+            Request_Controller _request = new Request_Controller();
 
-            TimeSpan? TS = eDate - sDate;
-           
-            MessageBox.Show("Jumlah: " + TS );
+            MessageBox.Show("");
+            //DateTime sDate = Convert.ToDateTime(StartDate.Text);
+            //DateTime eDate = Convert.ToDateTime(EndDate.Text);
+            //_request.addRequest(G_NIK, sDate, eDate);        
+            
         }
 
         private void Changed(object sender, SelectionChangedEventArgs e)
         {
             DateTime sDate = Convert.ToDateTime(StartDate.Text);
             DateTime eDate = Convert.ToDateTime(EndDate.Text);
-
+           
             string total = eDate.Subtract(sDate).Days.ToString();
             int days = Convert.ToInt32(total);
-            Txt_JumlahCuti.Text = "" + days + "";
+            G_jumlah = days;
+            if(G_jumlah > 5)
+            {
+                MessageBox.Show("Cannot Request More Than 5 Days!");
+            }
+            else
+            {
+
+                if (G_jumlah < G_lst_leave)
+                {
+                    G_lst_leave -= G_jumlah;
+                }
+                else
+                {
+                    int temp = G_jumlah - G_lst_leave;
+                    G_crnt_leave -= temp;
+                    G_lst_leave = 0;
+                }
+                if (G_crnt_leave < 0)
+                {
+                    MessageBox.Show("Leave Not Enough!");
+                }
+                Txt_JumlahCuti.Text = "" + days + "";
+                Txt_LastYearCuti.Text = "" + G_lst_leave + "";
+                Txt_CurrentCuti.Text = "" + G_crnt_leave + "";
+            }
+            
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)

@@ -16,5 +16,6 @@ namespace LeaveRequest.Models
         public string Name { get; set; }
         public int Duration { get; set; }
         public bool isDeleted { get; set; }
+        public ICollection<Leave_Data> Leave_Datas { get; set; }
     }
 }
