@@ -30,12 +30,10 @@ namespace LeaveRequest.View
         {
             InitializeComponent();
         }
-
         private void Chk_Remember_Checked(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
         {
             Forgot_Password forgot = new Forgot_Password();
@@ -44,8 +42,6 @@ namespace LeaveRequest.View
             forgot.Show();
             this.Close();
         }
-
-
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
             User user = new User();

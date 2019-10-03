@@ -23,7 +23,6 @@ namespace LeaveRequest.View
         {
             InitializeComponent();
         }
-
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
