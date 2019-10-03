@@ -10,11 +10,11 @@
     <Grid Background="Lavender">
         <Grid Height="600" Width="1080" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <Grid Width="900" Height="100" Margin="20" VerticalAlignment="Top">
-                <Button x:Name="Btn_Holiday" Content="Holiday" HorizontalAlignment="Left" Width="200" Height="60" Click="Btn_Holiday_Click"/>
-                <Button x:Name="Btn_Type_Leave" Content="Type Leave" HorizontalAlignment="Center" Width="200" Height="60" Click="Btn_Type_Leave_Click"/>
-                <Button x:Name="Btn_Leave_Status" Content="Leave Status" HorizontalAlignment="Right" Width="200" Height="60" Margin="20" Click="Btn_Leave_Status_Click"/>
+                <Button x:Name="Btn_Holiday" Content="Holiday" HorizontalAlignment="Left" Width="200" Height="60" Click="Btn_Holiday_Click" IsEnabled="True"/>
+                <Button x:Name="Btn_Type_Leave" Content="Type Leave" HorizontalAlignment="Center" Width="200" Height="60" Click="Btn_Type_Leave_Click" IsEnabled="True"/>
+                <Button x:Name="Btn_Leave_Status" Content="Leave Status" HorizontalAlignment="Right" Width="200" Height="60" Margin="20" Click="Btn_Leave_Status_Click" IsEnabled="True"/>
             </Grid>
-            <DataGrid x:Name="DataGridHoliday" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="800" Height="200" Visibility="Visible">
+            <DataGrid x:Name="DataGridHoliday" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="800" Height="200" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False" SelectedCellsChanged="HolidaySelectedCell">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFC500FF"/>
@@ -26,13 +26,13 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No" Width="100"/>
-                    <DataGridTextColumn Header="Name" Width="300"/>
-                    <DataGridTextColumn Header="Start Date" Width="200"/>
-                    <DataGridTextColumn Header="End Date" Width="200"/>
+                    <DataGridTextColumn Header="No" Width="100" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Start Date" Width="200" Binding="{Binding StartDate}"/>
+                    <DataGridTextColumn Header="End Date" Width="200" Binding="{Binding EndDate}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="DataGridTypeLeave" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="600" Height="200" Visibility="Hidden">
+            <DataGrid x:Name="DataGridTypeLeave" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="600" Height="200" Visibility="Hidden" AutoGenerateColumns="False" IsReadOnly="True" SelectedCellsChanged="TypeSelectedCell">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFC500FF"/>
@@ -44,12 +44,12 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No" Width="100"/>
-                    <DataGridTextColumn Header="Type Leave" Width="300"/>
-                    <DataGridTextColumn Header="Duration" Width="200"/>
+                    <DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Type Leave" Width="300" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Duration" Width="200" Binding="{Binding Duration}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="DataGridLeaveStatus" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="400" Height="200" Visibility="Hidden">
+            <DataGrid x:Name="DataGridLeaveStatus" HorizontalAlignment="Center" Margin="40,150,40,0" VerticalAlignment="Top" Width="400" Height="200" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False" SelectedCellsChanged="StatusSelectedCell" >
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFC500FF"/>
@@ -61,19 +61,24 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No" Width="100"/>
-                    <DataGridTextColumn Header="Leave Status" Width="300"/>
+                    <DataGridTextColumn Header="No" Width="100" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Leave Status" Width="300" Binding="{Binding Status}"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <TextBox x:Name="txtHoliday" Margin="150,350,725,200" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Holiday Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Visible"/>
-            <DatePicker x:Name="getStartDate" HorizontalAlignment="Left" Height="42" Margin="385,360,0,0" VerticalAlignment="Top" Width="255" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:HintAssist.Hint="Start Date" Visibility="Visible"/>
-            <DatePicker x:Name="getEndDate" HorizontalAlignment="Left" Height="42" Margin="675,360,0,0" VerticalAlignment="Top" Width="255" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:HintAssist.Hint="End Date" Visibility="Visible"/>
-            <Button x:Name="Btn_Save_Holiday" Content="Save" HorizontalAlignment="Left" Margin="489,456,0,0" VerticalAlignment="Top" Width="74" Visibility="Visible"/>
-
+            <TextBox x:Name="txtHoliday" Margin="150,350,725,200" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Holiday Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Hidden"/>
+            <DatePicker x:Name="getStartDate" HorizontalAlignment="Left" Height="42" Margin="385,360,0,0" VerticalAlignment="Top" Width="255" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:HintAssist.Hint="Start Date" Visibility="Hidden"/>
+            <DatePicker x:Name="getEndDate" HorizontalAlignment="Left" Height="42" Margin="675,360,0,0" VerticalAlignment="Top" Width="255" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" materialDesign:HintAssist.Hint="End Date" Visibility="Hidden"/>
+            <Button x:Name="Btn_Save_Holiday" Content="Save" HorizontalAlignment="Left" Margin="489,456,0,0" VerticalAlignment="Top" Width="74" Visibility="Hidden" Click="Btn_Save_Holiday_Click"/>
+            <Button x:Name="Btn_Update_Holiday" Content="Update" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="74" Visibility="Hidden" Margin="150,456,0,0" Click="Btn_Update_Holiday_Click"/>
+            <Button x:Name="Btn_Del_Holiday" Content="Delete" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="74" Visibility="Hidden" Margin="0,456,168,112" Click="Btn_Del_Holiday_Click"/>
+            
             <TextBox x:Name="txtTypeLeave" Margin="240,360,585,190" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Type Leave" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Hidden"/>
             <TextBox x:Name="txtDuration" Margin="590,360,250,190" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Duration" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="textBox_PreviewTextInput" PreviewKeyDown="textBox_PreviewKeyDown" Visibility="Hidden"/>
-            <Button x:Name="Btn_Save_Type_Leave" Content="Save" HorizontalAlignment="Left" Margin="489,456,0,0" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>
+            <Button x:Name="Btn_Update_Type_Leave" Content="Update" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="74" Visibility="Hidden" Margin="150,456,0,0" Click="Btn_Update_Type_Leave_Click"/>
+            <Button x:Name="Btn_Save_Type_Leave" Content="Save" HorizontalAlignment="Left" Margin="489,456,0,0" VerticalAlignment="Top" Width="74" Visibility="Hidden" Click="Type_Save"/>
+            <Button x:Name="Btn_Del_Type_Leave" Content="Delete" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="74" Visibility="Hidden" Margin="0,456,168,112" Click="Btn_Del_Type_Leave_Click"/>
+            
 
             <TextBox x:Name="txtStatus" Margin="430,370,470,180" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Leave Status" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Hidden"/>
             <Button x:Name="Btn_Save_Leave_Status" Content="Save" HorizontalAlignment="Left" Margin="489,456,0,0" VerticalAlignment="Top" Width="74" Visibility="Hidden"/>

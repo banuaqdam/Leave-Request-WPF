@@ -76,6 +76,14 @@ namespace LeaveRequest.View
             request.Show();
             this.Close();
         }
+
+        private void ChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            Change_Password _change = new Change_Password(G_NIK);
+            this.Hide();
+            _change.Show();
+            this.Close();
+        }
         //private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         //{
         //    ButtonOpenMenu.Visibility = Visibility.Collapsed;

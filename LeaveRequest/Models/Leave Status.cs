@@ -15,5 +15,6 @@ namespace LeaveRequest.Models
         public int Id { get; set; }
         public string Status { get; set; }
         public bool isDeleted { get; set; }
+        public ICollection<TR_Leave> TR_Leaves { get; set; }
     }
 }

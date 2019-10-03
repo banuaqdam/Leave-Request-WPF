@@ -18,5 +18,6 @@ namespace LeaveRequest.Models
         [ForeignKey("Division")]
         public string Divison_Id { get; set; }
         public Division Division { get; set; }
+        public ICollection<Employee> Employees { get; set; }
     }
 }

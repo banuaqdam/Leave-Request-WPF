@@ -36,5 +36,7 @@ namespace LeaveRequest.Models
         public string Department_Id { get; set; }
         public Department Department { get; set; }
 
+        public ICollection<Leave_Data> Leave_Datas { get; set; }
+
     }
 }

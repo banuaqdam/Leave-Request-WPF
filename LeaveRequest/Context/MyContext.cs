@@ -10,7 +10,7 @@ namespace LeaveRequest.Context
 {
     class MyContext : DbContext
     {
-        public MyContext() : base("DbConnectionString")
+        public MyContext() : base("LeaveRequest")
         {
 
         }
