@@ -38,7 +38,6 @@ namespace LeaveRequest.View
             string FName = get.First_Name;
             string LName = get.Last_Name;
         }
-
         private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
         {
 
