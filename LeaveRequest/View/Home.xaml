@@ -69,34 +69,22 @@
                             <TextBlock Text="Request" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Selected="Approve_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="CheckBold" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="Approve" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="History" MouseDoubleClick="History_Click">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="History" Selected="History_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="History" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="History" VerticalAlignment="Center" Margin="20 10"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
+                    <ListViewItem Height="60" Foreground="#FFC500FF" Name="Manage" Selected="Manage_Click">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="GreasePencil" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Input Leave Status" VerticalAlignment="Center" Margin="20 10" FontSize="12"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Calendar" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Input Holiday" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60" Foreground="#FFC500FF">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="FountainPenTip" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Input Leave Type" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="FileDocumentBoxOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Manage Data" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

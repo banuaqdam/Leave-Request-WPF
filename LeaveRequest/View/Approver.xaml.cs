@@ -15,47 +15,57 @@ using System.Windows.Shapes;
 namespace LeaveRequest.View
 {
     /// <summary>
-    /// Interaction logic for History.xaml
+    /// Interaction logic for Approver.xaml
     /// </summary>
-    public partial class History : Window
+    public partial class Approver : Window
     {
-        public History()
+        public Approver()
         {
             InitializeComponent();
         }
 
+        private void Btn_Approved_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Rejected_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-
             Home home = new Home();
+
+            this.Hide();
             home.Show();
             this.Close();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-
             Home home = new Home();
+
+            this.Hide();
             home.Show();
             this.Close();
         }
 
-        private void Approve_Click(object sender, RoutedEventArgs e)
+        private void History_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            History history = new History();
 
-            Approver approve = new Approver();
-            approve.Show();
+            this.Hide();
+            history.Show();
             this.Close();
         }
 
         private void Manage_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-
             Manage manage = new Manage();
+
+            this.Hide();
             manage.Show();
             this.Close();
         }
