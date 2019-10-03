@@ -33,6 +33,23 @@ namespace LeaveRequest.View
             this.Close();
         }
 
+        private void Manage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Manage Manage = new Manage();
+            Manage.Show();
+            this.Close();
+        }
+
+        private void Approve_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+            Approver Approver = new Approver();
+            Approver.Show();
+            this.Close();
+        }
         //private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         //{
         //    ButtonOpenMenu.Visibility = Visibility.Collapsed;
