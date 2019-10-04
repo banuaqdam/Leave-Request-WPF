@@ -16,7 +16,7 @@ namespace LeaveRequest.Controllers
         {
             User User = new User();
             MyContext Context = new MyContext();
-            User_Roles _roles = new User_Roles();
+            //User_Roles _roles = new User_Roles();
 
             //var getRole  = Context.User_Roles.Join(Context.Users,p=>Us)
             
@@ -39,6 +39,44 @@ namespace LeaveRequest.Controllers
                 }
             }
             return true;
+        }
+
+        public void ChangePass(string oldpassword, string newpassword)
+        {
+            var result = 0;
+
+            User user = new User();
+            MyContext _context = new MyContext();
+
+
+            var get = _context.Users.Where(u => u.Password == oldpassword).FirstOrDefault<User>();
+
+            if (get == null)
+            {
+                MessageBox.Show("Your Password is Incorect");
+            }
+            else
+            {
+                if (get.Password != newpassword)
+                {
+                    get.Password = newpassword;
+                    result = _context.SaveChanges();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Update Succes!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update Failed!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Your Password Can't be the same");
+                }
+
+            }
         }
     }
 }

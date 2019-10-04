@@ -1,4 +1,5 @@
 ﻿using LeaveRequest.Context;
+using LeaveRequest.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,9 +39,64 @@ namespace LeaveRequest.View
             string FName = get.First_Name;
             string LName = get.Last_Name;
         }
-        private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
+        private void Btn_Change_Click(object sender, RoutedEventArgs e)
         {
+            User_Controller Controller = new User_Controller();
 
+            if (Txt_OldPassword.Password.Length == 0 && Txt_NewPassword.Password.Length == 0 && Txt_VerifyPassword.Password.Length == 0)
+            {
+                OldPasswordErrorMassage.Text = "Enter your Old Password";
+                NewPasswordErrorMassage.Text = "Enter your New Password";
+                VerifyPasswordErrorMassage.Text = "Enter your Verify Password"; 
+                Txt_OldPassword.Focus();
+            }
+            else if (Txt_OldPassword.Password.Length == 0 && Txt_VerifyPassword.Password.Length == 0)
+            {
+                OldPasswordErrorMassage.Text = "Enter your Old Password";
+                VerifyPasswordErrorMassage.Text = "Enter your Verify Password";
+                Txt_OldPassword.Focus();
+            }
+            else if (Txt_NewPassword.Password.Length == 0 && Txt_VerifyPassword.Password.Length == 0)
+            {
+                NewPasswordErrorMassage.Text = "Enter your New Password";
+                VerifyPasswordErrorMassage.Text = "Enter your Verify Password";
+                Txt_NewPassword.Focus();
+            }
+            else if (Txt_OldPassword.Password.Length == 0)
+            {
+                OldPasswordErrorMassage.Text = "Enter your Old Password";               
+                Txt_OldPassword.Focus();
+            }
+            else if (Txt_NewPassword.Password.Length == 0)
+            {
+                NewPasswordErrorMassage.Text = "Enter your New Password";
+                Txt_NewPassword.Focus();
+            }
+            else if (Txt_VerifyPassword.Password.Length == 0)
+            {
+                VerifyPasswordErrorMassage.Text = "Enter your Verify Password";
+                Txt_VerifyPassword.Focus();
+            }
+            else if (Txt_OldPassword.Password == Txt_NewPassword.Password)
+            {
+                NewPasswordErrorMassage.Text = "Password Can't Be Same";
+                Txt_OldPassword.Focus();
+            }
+            else if (Txt_VerifyPassword.Password != Txt_NewPassword.Password)
+            {
+                NewPasswordErrorMassage.Text = "Verify Password Must Be Same";
+                Txt_NewPassword.Focus();
+            }
+            else
+            {
+                string oldpassword = Txt_OldPassword.Password;
+                string newpassword = Txt_NewPassword.Password;
+
+                Controller.ChangePass(oldpassword, newpassword);
+                this.Hide();
+                Home home = new Home(G_NIK);
+                home.Show();
+            }
         }
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
