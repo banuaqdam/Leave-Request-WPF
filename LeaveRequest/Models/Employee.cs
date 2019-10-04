@@ -29,13 +29,14 @@ namespace LeaveRequest.Models
         public int Last_Year_Before { get; set; }
         public int Current_Leave_Before { get; set; }
         public bool isDeleted { get; set; }
+
         [ForeignKey("Manager")]
         public string Manager_Id { get; set; }
         public Employee Manager { get; set; }
+
         [ForeignKey("Department")]
         public string Department_Id { get; set; }
         public Department Department { get; set; }
-
         public ICollection<Leave_Data> Leave_Datas { get; set; }
 
     }

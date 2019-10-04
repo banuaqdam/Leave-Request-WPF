@@ -95,16 +95,9 @@
             <TextBlock x:Name="Txt_Name" Margin="50 50 300 5" OpacityMask="Crimson" Foreground="Black"/>
             <TextBlock x:Name="Txt_NIK"  Margin="50 50 300 5 " OpacityMask="Crimson" Foreground="Black" />
             <TextBlock x:Name="LeaveType" Margin="50 30 100 5"   TextWrapping="Wrap" Text="Jenis Cuti :" VerticalAlignment="Top"/>
-            <ComboBox x:Name="comboBox"  Margin="50 10 100 20" Text="Pilih Jenis Cuti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120">
-                <ComboBoxItem Content="Cuti Normal"/>
-                <ComboBoxItem Content="Cuti Melahirkan"/>
-                <ComboBoxItem Content="Cuti Sakit"/>
-                <ComboBoxItem Content="Cuti Menikah"/>
-                <ComboBoxItem Content="Cuti Menikahkan Anak"/>
-                <ComboBoxItem Content="Cuti Khitan Anak"/>
-                <ComboBoxItem Content="Cuti Baptis Anak"/>
-                <ComboBoxItem Content="Cuti Istri Keguguran"/>
-                <ComboBoxItem Content="Cuti Kerabat Meninggal"/>
+            <ComboBox x:Name="comboBox" Margin="50 10 100 20" Text="Pilih Jenis Cuti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectedValuePath="Id" SelectedValue="{Binding Id}">
+                <ComboBoxItem Content="Cuti Normal"></ComboBoxItem>
+                <ComboBoxItem Content="Cuti Normal"></ComboBoxItem>
             </ComboBox>
             <TextBlock x:Name="BlockStartDate" HorizontalAlignment="Left" Margin="50 0 0 0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Start Date :"/></TextBlock>
             <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="50 0 0 0"  VerticalAlignment="Top" Width="120"/>

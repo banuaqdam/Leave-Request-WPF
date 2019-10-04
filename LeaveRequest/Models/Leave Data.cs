@@ -22,10 +22,7 @@ namespace LeaveRequest.Models
         public Type_Leave Type_Leave { get; set; }
         [ForeignKey("Employee")]
         public string NIK { get; set; }
-        public Employee Employee { get; set; }
-        [ForeignKey("Manager")]
         public string Manager_Id { get; set; }
-        public Employee Manager { get; set; }
-
+        public Employee Employee { get; set; }      
     }
 }

@@ -84,6 +84,16 @@ namespace LeaveRequest.View
             _change.Show();
             this.Close();
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Logout Successful");
+
+            this.Hide();
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
         //private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         //{
         //    ButtonOpenMenu.Visibility = Visibility.Collapsed;

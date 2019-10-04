@@ -39,7 +39,7 @@
                     <StackPanel Width="150">
                         <Button Content="Change Password" Name="ChangePassword" Click="ChangePassword_Click" />
                         <Separator/>
-                        <Button Content="Logout" Name="Logout"/>
+                        <Button Content="Logout" Name="Logout" Click="Logout_Click"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>

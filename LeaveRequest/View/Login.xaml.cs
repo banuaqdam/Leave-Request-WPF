@@ -29,10 +29,12 @@ namespace LeaveRequest.View
         public Login()
         {
             InitializeComponent();
+            Txt_Email.Text = Properties.Settings.Default.Email;
         }
         private void Chk_Remember_Checked(object sender, RoutedEventArgs e)
         {
-
+            Properties.Settings.Default.Email = Txt_Email.Text;
+            Properties.Settings.Default.Save();
         }
         private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
         {
@@ -48,17 +50,25 @@ namespace LeaveRequest.View
             User_Controller _user = new User_Controller();
             MyContext _contex = new MyContext();
 
-            string email = Txt_Email.Text;
-            string password = Txt_Password.Password;
-            var get = _contex.Users.Where(u => u.Email == email).FirstOrDefault<User>();
-            string NIK = get.Employee_Id;
-            var status = _user.UserLogin(email, password);
-            if (status == true)
+            if(Txt_Email.Text.Length != 0 && Txt_Password.Password.Length != 0)
             {
-                this.Hide();
-                Home home = new Home(NIK);
-                home.Show();
+                string email = Txt_Email.Text;
+                string password = Txt_Password.Password;
+                var get = _contex.Users.Where(u => u.Email == email).FirstOrDefault<User>();
+                string NIK = get.Employee_Id;
+                var status = _user.UserLogin(email, password);
+                if (status == true)
+                {
+                    this.Hide();
+                    Home home = new Home(NIK);
+                    home.Show();
+                }
             }
+            else
+            {
+                MessageBox.Show("Please Fill All The Requirement!");
+            }
+            
         }
     }
 }

@@ -9,7 +9,7 @@
         Title="Leave Request" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="Lavender">
         <Grid Height="600" Width="1080" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <DataGrid x:Name="DataGridHistory" HorizontalAlignment="Center" Margin="40,100,40,0" VerticalAlignment="Top" Width="900" Height="400" >
+            <DataGrid x:Name="DataGridHistory" HorizontalAlignment="Center" Margin="40,100,40,0" VerticalAlignment="Top" Width="900" Height="400" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFC500FF"/>
@@ -21,11 +21,11 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No" Width="100"/>
-                    <DataGridTextColumn Header="Start Date" Width="200"/>
-                    <DataGridTextColumn Header="End Date" Width="200"/>
-                    <DataGridTextColumn Header="Type Leave" Width="200"/>
-                    <DataGridTextColumn Header="Status" Width="200"/>
+                    <DataGridTextColumn Header="No" Width="100" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Start Date" Width="200" Binding="{Binding sDate}"/>
+                    <DataGridTextColumn Header="End Date" Width="200" Binding="{Binding eDate}"/>
+                    <DataGridTextColumn Header="Type Leave" Width="200" Binding="{Binding type}"/>
+                    <DataGridTextColumn Header="Status" Width="200" Binding="{Binding status}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="Btn_Back" Content="Back" HorizontalAlignment="Left" Margin="916,531,0,0" VerticalAlignment="Top" Width="74" Click="Btn_Back_Click"/>

@@ -13,7 +13,7 @@ namespace LeaveRequest.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime Approver_Date { get; set; }
+        public DateTime? Approver_Date { get; set; }
         [ForeignKey("Leave_Status")]
         public int Leave_Status_Id { get; set; }
         public Leave_Status Leave_Status { get; set; }
