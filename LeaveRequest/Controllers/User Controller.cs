@@ -16,7 +16,10 @@ namespace LeaveRequest.Controllers
         {
             User User = new User();
             MyContext Context = new MyContext();
+            User_Roles _roles = new User_Roles();
 
+            //var getRole  = Context.User_Roles.Join(Context.Users,p=>Us)
+            
             var get = Context.Users.Where(u => u.Email == _email).FirstOrDefault<User>();
             if (get == null)
             {
