@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LeaveRequest.Context;
+using LeaveRequest.Models;
 
 namespace LeaveRequest.View
 {
@@ -24,6 +26,20 @@ namespace LeaveRequest.View
         {
             InitializeComponent();
             setNIK(NIK);
+            TR_Leave _tr = new TR_Leave();
+            MyContext _context = new MyContext();
+            Leave_Data _data = new Leave_Data();
+
+            var get = _context.TR_Leaves.Join(_context.Leave_Datas, p => p.Leave_Data_Id, s => s.Id, (p, s) => new
+            {
+                Id = p.Id,
+                sDate = s.StartDate,
+                eDate = s.EndDate,
+                type = s.Type_Leave_ID,
+                status = p.Leave_Status_Id,
+                _nik = s.NIK
+            }).Where(u => u._nik == G_NIK).ToList();
+            DataGridHistory.ItemsSource = get;
         }
         public void setNIK(string NIK)
         {

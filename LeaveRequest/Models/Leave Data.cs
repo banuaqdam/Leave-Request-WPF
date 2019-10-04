@@ -17,15 +17,17 @@ namespace LeaveRequest.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime CreateAt { get; set; }
-        [ForeignKey("Type_Leave")]
+
+        [ForeignKey("Type Leave")]
         public int Type_Leave_ID { get; set; }
         public Type_Leave Type_Leave { get; set; }
+
         [ForeignKey("Employee")]
         public string NIK { get; set; }
-        public Employee Employee { get; set; }
-        [ForeignKey("Manager")]
+        public Employee Employee_NIK { get; set; }
+
+        [ForeignKey("Employee")]
         public string Manager_Id { get; set; }
         public Employee Manager { get; set; }
-
     }
 }

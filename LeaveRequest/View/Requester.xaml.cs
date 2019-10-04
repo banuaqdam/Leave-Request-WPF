@@ -78,10 +78,17 @@ namespace LeaveRequest.View
         {
             Request_Controller _request = new Request_Controller();
 
-            MessageBox.Show("");
-            //DateTime sDate = Convert.ToDateTime(StartDate.Text);
-            //DateTime eDate = Convert.ToDateTime(EndDate.Text);
-            //_request.addRequest(G_NIK, sDate, eDate);        
+            //MessageBox.Show("");
+            DateTime sDate = Convert.ToDateTime(StartDate.Text);
+            DateTime eDate = Convert.ToDateTime(EndDate.Text);
+            if (G_crnt_leave < 0)
+            {
+                MessageBox.Show("Leave Not Enough!");
+            }
+            else
+            {
+                _request.addRequest(G_NIK, sDate, eDate);
+            }
             
         }
 
@@ -110,10 +117,7 @@ namespace LeaveRequest.View
                     G_crnt_leave -= temp;
                     G_lst_leave = 0;
                 }
-                if (G_crnt_leave < 0)
-                {
-                    MessageBox.Show("Leave Not Enough!");
-                }
+                
                 Txt_JumlahCuti.Text = "" + days + "";
                 Txt_LastYearCuti.Text = "" + G_lst_leave + "";
                 Txt_CurrentCuti.Text = "" + G_crnt_leave + "";

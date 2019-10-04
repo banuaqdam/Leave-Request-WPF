@@ -19,5 +19,6 @@ namespace LeaveRequest.Models
         [ForeignKey("NIK")]
         public string Employee_Id { get; set; }
         public Employee NIK { get; set; }
+        public ICollection<User_Roles> User_Roles { get; set; }
     }
 }
