@@ -16,6 +16,7 @@ namespace LeaveRequest.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public bool isDeleted { get; set; }
+
         [ForeignKey("NIK")]
         public string Employee_Id { get; set; }
         public Employee NIK { get; set; }

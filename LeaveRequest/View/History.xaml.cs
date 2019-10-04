@@ -37,7 +37,7 @@ namespace LeaveRequest.View
                 eDate = s.EndDate,
                 type = s.Type_Leave_ID,
                 status = p.Leave_Status_Id,
-                _nik = s.NIK
+                 _nik = s.NIK
             }).Where(u => u._nik == G_NIK).ToList();
             DataGridHistory.ItemsSource = get;
         }

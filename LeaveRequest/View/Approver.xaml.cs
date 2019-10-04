@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LeaveRequest.Context;
+using LeaveRequest.Models;
+using LeaveRequest.Controllers;
+
 
 namespace LeaveRequest.View
 {
@@ -19,11 +23,28 @@ namespace LeaveRequest.View
     /// </summary>
     public partial class Approver : Window
     {
+        
+
         public string G_NIK;
         public Approver(string NIK)
         {
+            MyContext _context = new MyContext();
+
             InitializeComponent();
             setNIK(NIK);
+            
+             var get = _context.TR_Leaves.Join(_context.Leave_Datas, p => p.Leave_Data_Id, s => s.Id, (p, s) => new
+                {
+                    Id = p.Id,
+                    _name = s.Name,
+                    sDate = s.StartDate,
+                    eDate = s.EndDate,
+                    type = s.Type_Leave_ID,
+                    status = p.Leave_Status_Id,
+                    _nik = s.NIK,
+                    _mng = s.Manager_Id
+                }).Where(u => u._mng == G_NIK).ToList();
+            DataGridApprover.ItemsSource = get;
         }
         public void setNIK(string NIK)
         {
@@ -32,7 +53,11 @@ namespace LeaveRequest.View
 
         private void Btn_Approved_Click(object sender, RoutedEventArgs e)
         {
+            MyContext _context = new MyContext();
+            Leave_Data _leave = new Leave_Data();
 
+            var get = _context.Leave_Datas.Max(u=>u.Id);
+            MessageBox.Show("" + get + "");
         }
 
         private void Btn_Rejected_Click(object sender, RoutedEventArgs e)

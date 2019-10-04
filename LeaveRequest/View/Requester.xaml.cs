@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LeaveRequest.Context;
 using LeaveRequest.Controllers;
+using LeaveRequest.Models;
 
 
 namespace LeaveRequest.View
@@ -41,7 +42,12 @@ namespace LeaveRequest.View
             Txt_NIK.Text = "" + G_NIK + "";
             Txt_LastYearCuti.Text = "" + G_lst_leave + "";
             Txt_CurrentCuti.Text = "" + G_crnt_leave + "";
-            
+
+            Type_Leave _leave = new Type_Leave();
+            MyContext _context = new MyContext();
+
+            //var get = _context.Type_Leaves.Where(u => u.isDeleted != true).ToList();
+            //comboBox.ItemsSource = get;
         }
         public void setNIK(string NIK)
         {
@@ -87,9 +93,10 @@ namespace LeaveRequest.View
             }
             else
             {
-                _request.addRequest(G_NIK, sDate, eDate);
+                _request.addRequest(G_NIK, sDate, eDate, G_crnt_leave, G_lst_leave);
             }
-            
+            //string s = comboBox.Text;
+            //MessageBox.Show("" + s + "");
         }
 
         private void Changed(object sender, SelectionChangedEventArgs e)
@@ -99,14 +106,13 @@ namespace LeaveRequest.View
            
             string total = eDate.Subtract(sDate).Days.ToString();
             int days = Convert.ToInt32(total);
-            G_jumlah = days;
+            G_jumlah = days + 1;
             if(G_jumlah > 5)
             {
                 MessageBox.Show("Cannot Request More Than 5 Days!");
             }
             else
             {
-
                 if (G_jumlah < G_lst_leave)
                 {
                     G_lst_leave -= G_jumlah;
@@ -118,7 +124,7 @@ namespace LeaveRequest.View
                     G_lst_leave = 0;
                 }
                 
-                Txt_JumlahCuti.Text = "" + days + "";
+                Txt_JumlahCuti.Text = "" + G_jumlah + "";
                 Txt_LastYearCuti.Text = "" + G_lst_leave + "";
                 Txt_CurrentCuti.Text = "" + G_crnt_leave + "";
             }

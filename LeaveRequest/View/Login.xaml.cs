@@ -29,10 +29,12 @@ namespace LeaveRequest.View
         public Login()
         {
             InitializeComponent();
+            Txt_Email.Text = Properties.Settings.Default.Email;
         }
         private void Chk_Remember_Checked(object sender, RoutedEventArgs e)
         {
-
+            Properties.Settings.Default.Email = Txt_Email.Text;
+            Properties.Settings.Default.Save();
         }
         private void Btn_Forgot_Click(object sender, RoutedEventArgs e)
         {
